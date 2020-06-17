@@ -1,7 +1,7 @@
 ## Kernel
 
 Compile kernel as follow (assuming you are using latest mainline kernel from [kernel.org](https://www.kernel.org/))
-```console
+```shell
 patch -p1 < ../kernel.patch
 zcat /proc/config.gz > .config
 make olddefconfig
@@ -16,7 +16,7 @@ swap = 0
 ```
 
 Workaround for Visual Studio Code
-```console
+```shell
 sed -i 's/WSL_BUILD=0/WSL_BUILD=41984/g' "$(which code)"   
 ```
 
@@ -25,7 +25,7 @@ sed -i 's/WSL_BUILD=0/WSL_BUILD=41984/g' "$(which code)"
 Just add windows host ip to /etc/hosts.
 
 .zshrc
-```console
+```shell
 sudo sed -i '/^\S* windows-host$/d' /etc/hosts 
 echo "$(ip r | awk 'NR==1{print $3}') windows-host" | sudo tee -a /etc/hosts > /dev/null
 ```
@@ -37,7 +37,7 @@ proxy = socks5h://windows-host:7891
 ```
 
 .ssh/config
-```console
+```shell
 Host github.com
 User git
 ProxyCommand nc -X 5 -x windows-host:7891 %h %p
@@ -52,13 +52,13 @@ root = /
 options = "metadata,umask=22,fmask=011"
 ```
 /etc/fstab
-```
+```shell
 # <file system> <dir> <type> <options> <dump> <pass>
 tmpfs   /tmp    tmpfs rw,nodev,nosuid 0 0
 ```
 
 ## Vim
-```console
+```vim
 "clipboard
 let s:clip = '/c/Windows/System32/clip.exe' 
 if executable(s:clip)
