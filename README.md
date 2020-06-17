@@ -1,7 +1,6 @@
-# wsl2-hacking
+## Kernel
 
-## Kernel Settings
-compile kernel as follow (assuming you are using latest kernel from [kernel.org](https://www.kernel.org/))
+Compile kernel as follow (assuming you are using latest mainline kernel from [kernel.org](https://www.kernel.org/))
 ```console
 patch -p1 < ../kernel.patch
 zcat /proc/config.gz > .config
@@ -16,12 +15,15 @@ kernel = /path/to/kernel
 swap = 0
 ```
 
-vscode workaround
+Workaround for Visual Studio Code
 ```console
 sed -i 's/WSL_BUILD=0/WSL_BUILD=41984/g' "$(which code)"   
 ```
 
-## Proxy Settings
+## Proxy
+
+Just add windows host ip to /etc/hosts.
+
 .zshrc
 ```console
 sudo sed -i '/^\S* windows-host$/d' /etc/hosts 
@@ -41,7 +43,7 @@ User git
 ProxyCommand nc -X 5 -x windows-host:7891 %h %p
 ```
 
-## Mount Settings
+## Mount
 /etc/wsl.conf
 ```ini
 [automount]
@@ -55,7 +57,7 @@ options = "metadata,umask=22,fmask=011"
 tmpfs   /tmp    tmpfs rw,nodev,nosuid 0 0
 ```
 
-## Vim Settings
+## Vim
 ```console
 "clipboard
 let s:clip = '/c/Windows/System32/clip.exe' 
