@@ -1,7 +1,7 @@
 From 9754c37e39fdfaae3fd610d45c6093a97d45acb4 Mon Sep 17 00:00:00 2001
 From: lightmelodies <lightmelodies@outlook.com>
 Date: Sun, 14 Jun 2020 19:39:48 +0800
-Subject: [PATCH] wsl2 kernel hacking
+Subject: [PATCH] wsl2 memory reclaim and O3 optimization
 
 ---
  arch/x86/Kconfig.cpu              | 301 +++++++++++++++++++++++++++---
